@@ -1,0 +1,24 @@
+while True:
+  nums=[]
+  prompts = ['first', 'second', 'third']
+
+  for i in range(3):
+    val = int(input(f'Enter the {prompts[i]} interger: '))
+    nums.append(val)
+
+    if nums == [999, 999, 999]:
+      if set_count >= 10:
+        break
+      else:
+        print('You must enter at least 10 sets before quitting.')
+        continue
+
+print(f"\nYou entered: {nums[0]}, {nums[1]}, {nums[2]}")
+avg = findaverage(nums[0], nums[1], nums[2])
+print(f"The average is: {avg:.3f}")
+comparetoavg(nums[0], nums[1], nums[2], avg)
+
+print(f'You entered and processed {set_count} sets of data.')
+    
+
+      
