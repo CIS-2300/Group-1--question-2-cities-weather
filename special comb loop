@@ -1,3 +1,4 @@
+set_count=0
 while True:
   nums=[]
   prompts = ['first', 'second', 'third']
@@ -17,6 +18,8 @@ print(f"\nYou entered: {nums[0]}, {nums[1]}, {nums[2]}")
 avg = findaverage(nums[0], nums[1], nums[2])
 print(f"The average is: {avg:.3f}")
 comparetoavg(nums[0], nums[1], nums[2], avg)
+
+set_count+=1
 
 print(f'You entered and processed {set_count} sets of data.')
     
