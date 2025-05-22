@@ -1,9 +1,12 @@
-# TODO: Implement the main program logic here
-# Import your functions from src/introduction, src/findaverage, and src/comparetoavg
-# Call these functions accordingly in the main() function
+from comparetoavg import compareToAvg
 
 def main():
-    pass  # TODO: Replace with your implementation
+    num1 = int(input("Enter first number: "))
+    num2 = int(input("Enter second number: "))
+    num3 = int(input("Enter third number: "))
+    avg = (num1 + num2 + num3) / 3
+    compareToAvg(avg, [num1, num2, num3])
 
 if __name__ == "__main__":
     main()
+
