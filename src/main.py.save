@@ -1,0 +1,27 @@
+from src.comparetoavg import compareToAverage
+
+def main():
+    num1 = int(input("Enter first number: "))
+    num2 = int(input("Enter second number: "))
+    num3 = int(input("Enter third number: "))
+    avg = (num1 + num2 + num3) / 3
+    compareToAverage(avg, [num1, num2, num3])
+
+if __name__ == "__main__":
+from src.comparetoavg import compareToAvg
+def main():
+    num1 = int(input("Enter first number: "))
+    num2 = int(input("Enter second number: "))
+    num3 = int(input("Enter third number: "))
+    avg = (num1 + num2 + num3) / 3
+    compareToAverage(avg, [num1, num2, num3])
+
+if __name__ == "__main__":
+from src.comparetoavg import compareToAvg
+
+def main():
+    num1 = int(input("Enter first number: "))
+    num2 = int(input("Enter second number: "))
+    num3 = int(input("Enter third number: "))
+    avg = (num1 + num2 + num3) / 3
+    compareToAvg(avg, [num1, num2, num3])
