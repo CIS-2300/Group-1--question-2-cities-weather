@@ -1,22 +1,30 @@
-from comparetoavg import compareToAvg
+from weatherapi import get_weather
+import requests
+from bs4 import BeautifulSoup
+
+def get_cities():
+    url = "https://en.wikipedia.org/wiki/List_of_United_States_cities_by_population"
+    response = requests.get(url)
+
+    soup = BeautifulSoup(response.text, "html.parser")
+    table = soup.find("table", {"class": "wikitable sortable"})
+    
+    cities = []
+    for row in table.find_all("tr")[1:11]:  # Get top 10 cities
+        city_cell = row.find_all("td")[1]
+        city = city_cell.text.strip()
+        cities.append(city)
+    
+    return cities
 
 def main():
-    num1 = int(input("Enter first number: "))
-    num2 = int(input("Enter second number: "))
-    num3 = int(input("Enter third number: "))
-    avg = (num1 + num2 + num3) / 3
-    compareToAvg(avg, [num1, num2, num3])
+    cities = get_cities()
+    print("Fetching weather for top 10 U.S. cities...\n")
+
+    for city in cities:
+        weather = get_weather(city)
+        print(weather)
 
 if __name__ == "__main__":
     main()
-import sqlite3
-
-def save_df_to_sql(df, db_name="question2_data.db", table_name="merged_data"):
-    conn = sqlite3.connect(db_name)
-    df.to_sql(table_name, conn, if_exists="replace", index=False)
-    conn.close()
-    print(f"Data saved to {db_name} in table '{table_name}'.")
-
-# Call the function with your merged dataframe
-save_df_to_sql(DF3)
 
