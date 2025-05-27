@@ -1,29 +1,12 @@
-from weatherapi import get_weather
-import requests
-from bs4 import BeautifulSoup
-
-def get_cities():
-    url = "https://en.wikipedia.org/wiki/List_of_United_States_cities_by_population"
-    response = requests.get(url)
-
-    soup = BeautifulSoup(response.text, "html.parser")
-    table = soup.find("table", {"class": "wikitable sortable"})
-    
-    cities = []
-    for row in table.find_all("tr")[1:11]:  # Get top 10 cities
-        city_cell = row.find_all("td")[1]
-        city = city_cell.text.strip()
-        cities.append(city)
-    
-    return cities
+from weatherapi import get_cities, get_weather, save_to_db
 
 def main():
     cities = get_cities()
-    print("Fetching weather for top 10 U.S. cities...\n")
-
     for city in cities:
-        weather = get_weather(city)
-        print(weather)
+        temp = get_weather(city)
+        if temp is not None:
+            print(f"{city}: {temp}°C")
+            save_to_db(city, temp)
 
 if __name__ == "__main__":
     main()
